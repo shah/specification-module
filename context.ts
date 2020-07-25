@@ -2,7 +2,7 @@ import {
   Context,
   ctxFactory,
   ExecutionEnvironments,
-} from "https://denopkg.com/shah/context-manager@v1.0.4/mod.ts";
+} from "https://denopkg.com/shah/context-manager@v1.0.5/mod.ts";
 import { Specification } from "./specification.ts";
 
 export const DEFAULT_REGISTRY_KEY_MODULE = "igs.spec.lang";
