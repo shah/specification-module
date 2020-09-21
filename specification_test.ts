@@ -1,14 +1,13 @@
 import {
-  assert,
   assertEquals,
-} from "https://deno.land/std@v0.62.0/testing/asserts.ts";
+} from "https://deno.land/std@v0.70.0/testing/asserts.ts";
 import {
   importSpecification,
   moduleDefaultIsTarget,
 } from "./specification.ts";
+import * as invalidModule from "./specification_test_invalid.ts";
 import { isTestModel, TestModel } from "./specification_test_model.ts";
 import * as validModule from "./specification_test_valid.ts";
-import * as invalidModule from "./specification_test_invalid.ts";
 
 Deno.test("Import valid model", async () => {
   const supplier = await importSpecification<TestModel>(

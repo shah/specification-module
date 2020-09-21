@@ -3,12 +3,12 @@ export interface Specification<T> {
   readonly target: T;
 }
 
-export function isSpecification<T>(x: any): x is Specification<T> {
-  return "isSpecification" in x;
+export function isSpecification<T>(x: unknown): x is Specification<T> {
+  return x && typeof x === "object" && "isSpecification" in x;
 }
 
 export interface SpecificationConstructor<T> {
-  new (target: T, module: any, moduleUrl: ModuleUrl): Specification<T>;
+  new (target: T, module: unknown, moduleUrl: ModuleUrl): Specification<T>;
 }
 
 export type ModuleUrl = string;
@@ -21,19 +21,20 @@ export interface SpecificationSupplier<T> {
   readonly error?: Error;
 }
 
+// deno-lint-ignore no-explicit-any
 export function moduleDefaultIsTarget(module: any): any {
   return module.default;
 }
 
-export function moduleIsTarget(module: any): any {
+export function moduleIsTarget(module: unknown): unknown {
   return module;
 }
 
 export function importSpecification<T>(
   moduleUrl: ModuleUrl,
-  module: any,
-  targetGuard: (x: any) => x is T,
-  targetAcquirer: (module: any) => T,
+  module: unknown,
+  targetGuard: (x: unknown) => x is T,
+  targetAcquirer: (module: unknown) => T,
   specConstructor?: SpecificationConstructor<T>,
 ): SpecificationSupplier<T> {
   const target = targetAcquirer(module);
