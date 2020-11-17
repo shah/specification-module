@@ -1,6 +1,6 @@
 import {
   assertEquals,
-} from "https://deno.land/std@v0.70.0/testing/asserts.ts";
+} from "https://deno.land/std@0.78.0/testing/asserts.ts";
 import {
   importSpecification,
   moduleDefaultIsTarget,
