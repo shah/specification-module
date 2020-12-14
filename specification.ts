@@ -1,10 +1,13 @@
+import * as safety from "https://denopkg.com/shah/ts-safety@v0.3.1/mod.ts";
+
 export interface Specification<T> {
   readonly isSpecification: true;
   readonly target: T;
 }
 
 export function isSpecification<T>(x: unknown): x is Specification<T> {
-  return x && typeof x === "object" && "isSpecification" in x;
+  const isSpecification = safety.typeGuard<Specification<T>>("isSpecification");
+  return isSpecification(x);
 }
 
 export interface SpecificationConstructor<T> {

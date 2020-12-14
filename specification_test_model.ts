@@ -4,8 +4,9 @@ export interface TestModel {
 }
 
 export function isTestModel(x: unknown): x is TestModel {
-  return x && typeof x === "object" && (
-    "textProperty" in x &&
-    "numericProperty" in x
-  );
+  if (x && typeof x === "object") {
+    return "textProperty" in x &&
+      "numericProperty" in x;
+  }
+  return false;
 }
