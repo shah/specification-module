@@ -1,4 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.78.0/testing/asserts.ts";
+import { assertEquals } from "https://deno.land/std@0.80.0/testing/asserts.ts";
 import { importSpecification, moduleDefaultIsTarget } from "./specification.ts";
 import * as invalidModule from "./specification_test_invalid.ts";
 import { isTestModel, TestModel } from "./specification_test_model.ts";
